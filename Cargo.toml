@@ -1,0 +1,7 @@
+[package]
+name = "blockbattle-rust-starterbot"
+version = "0.1.0"
+authors = ["Peter Smit <peter@smitmail.eu>"]
+
+[dependencies]
+rand = "0.3"
