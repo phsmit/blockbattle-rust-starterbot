@@ -171,7 +171,12 @@ impl<T> Parser<T> where T: io::BufRead {
         while {line.clear(); try!(self.r.read_line(&mut line)) > 0} {
             self.line_number += 1;
 
-            match try!(parse_line(&line, self.line_number, settings, game)) {
+            let l = line.trim();
+
+            //skip empty lines
+            if l.is_empty() {continue}
+            
+            match try!(parse_line(l, self.line_number, settings, game)) {
                 Some(x) => return Ok(x),
                 None => continue,
             }
